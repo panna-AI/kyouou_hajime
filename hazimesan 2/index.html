@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>饗応 元（キョウオウハジメ）| 京都・丸太町の日本酒レストラン</title>
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;700&family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #121212; /* 深い漆黒 */
+            --gold: #d4af37; /* 落ち着きのある金色 */
+            --white: #f8f8f8;
+            --gray: #a8a8a8;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: var(--bg);
+            color: var(--white);
+            font-family: 'Noto Sans JP', sans-serif;
+            line-height: 1.9;
+            overflow-x: hidden;
+        }
+        h1, h2, h3, .serif { font-family: 'Shippori Mincho', serif; letter-spacing: 0.15em; }
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        img { max-width: 100%; height: auto; display: block; }
+
+        /* Navigation */
+        nav {
+            position: fixed; width: 100%; padding: 20px 5%;
+            display: flex; justify-content: space-between; align-items: center;
+            z-index: 1000; background: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent);
+        }
+        .logo { font-size: 1.8rem; color: var(--gold); font-weight: 700; }
+        .reserve-btn { background: var(--gold); color: #000; padding: 12px 28px; border-radius: 2px; font-weight: bold; font-size: 0.95rem; letter-spacing: 0.05em; }
+        .reserve-btn:hover { opacity: 0.9; }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh; display: flex; align-items: center; justify-content: center;
+            /* 外観写真を使用 */
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url('exterior.jpg');
+            background-size: cover; background-position: center; text-align: center;
+        }
+        .hero-content h1 { font-size: 3.5rem; margin-bottom: 30px; line-height: 1.5; text-shadow: 2px 2px 10px rgba(0,0,0,0.8); }
+        .hero-content p { font-size: 1.3rem; color: var(--white); letter-spacing: 0.1em; text-shadow: 1px 1px 5px rgba(0,0,0,0.8); }
+
+        /* Section Layout */
+        section { padding: 120px 5%; max-width: 1100px; margin: 0 auto; }
+        .section-title { text-align: center; margin-bottom: 70px; }
+        .section-title span { display: block; color: var(--gold); font-size: 0.9rem; margin-bottom: 15px; font-family: 'Noto Sans JP', sans-serif; letter-spacing: 0.2em; }
+        .section-title h2 { font-size: 2.5rem; position: relative; padding-bottom: 20px; }
+        .section-title h2::after { content: ""; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 60px; height: 2px; background: var(--gold); }
+
+        /* Flex Columns */
+        .flex-container { display: flex; gap: 80px; align-items: center; }
+        .flex-content { flex: 1.2; }
+        .flex-image { flex: 1; }
+        .flex-image img { width: 100%; border-radius: 2px; box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
+        .flex-content h3 { font-size: 1.8rem; color: var(--gold); margin-bottom: 30px; line-height: 1.4; }
+        .flex-content p { margin-bottom: 20px; color: var(--gray); text-align: justify; }
+
+        /* Grid */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; }
+        .card { background: #1a1a1a; border: 1px solid #2a2a2a; overflow: hidden; transition: 0.3s; }
+        .card:hover { border-color: var(--gold); }
+        .card-img { height: 300px; overflow: hidden; }
+        .card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s; }
+        .card:hover .card-img img { transform: scale(1.08); }
+        .card-content { padding: 30px; }
+        .card-content h3 { color: var(--gold); margin-bottom: 15px; font-size: 1.4rem; }
+        .card-content p { color: var(--gray); font-size: 0.95rem; }
+
+        /* Table */
+        table { width: 100%; border-collapse: collapse; margin-top: 40px; }
+        th, td { padding: 25px; border-bottom: 1px solid #2a2a2a; text-align: left; vertical-align: top; }
+        th { color: var(--gold); width: 25%; font-weight: normal; font-size: 1.1rem; }
+        td { color: var(--gray); }
+
+        /* Footer */
+        footer { padding: 80px 5%; text-align: center; border-top: 1px solid #2a2a2a; background: #0a0a0a; }
+        .footer-logo { font-size: 2.2rem; color: var(--gold); margin-bottom: 25px; }
+        .footer-info { color: var(--gray); margin-bottom: 40px; }
+        .copyright { font-size: 0.8rem; color: #555; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2.2rem; }
+            .flex-container { flex-direction: column; gap: 40px; }
+            .section-title h2 { font-size: 2rem; }
+            th { width: 35%; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="logo serif">饗応 元</div>
+    <a href="tel:0757464861" class="reserve-btn">お電話で予約</a>
+</nav>
+
+<div class="hero">
+    <div class="hero-content">
+        <h1 class="serif">丸太町の宵、<br>五感で味わう酒と料理の饗宴。</h1>
+        <p class="serif">喧騒を離れた路地裏に、美食の秘密基地。</p>
+    </div>
+</div>
+
+<section id="story">
+    <div class="section-title">
+        <span>INTRODUCTION</span>
+        <h2 class="serif">饗応の心</h2>
+    </div>
+    <div class="flex-container">
+        <div class="flex-content">
+            <h3 class="serif">「元（はじめ）」から始まる、<br>美食の新しい形。</h3>
+            <p>店名の「饗応」には、心を込めて酒食でもてなすという意味を込めました。和食の伝統を大切にしながらも、イタリアンで培った自由な発想をひと匙。</p>
+            <p>重厚な一枚板のカウンターと、静かに時を刻む鷹の佇まい。14席の限られた空間だからこそ、お一人おひとりに寄り添い、最高の一献をご提案いたします。</p>
+        </div>
+        <div class="flex-image">
+            <img src="interior.jpg" alt="饗応 元のカウンターと鷹の置物">
+        </div>
+    </div>
+</section>
+
+<section id="cuisine">
+    <div class="section-title">
+        <span>CUISINE</span>
+        <h2 class="serif">和と洋が溶け合う一皿</h2>
+    </div>
+    <div class="grid">
+        <div class="card">
+            <div class="card-img">
+                <img src="meat.jpg" alt="厳選された和牛の霜降り">
+            </div>
+            <div class="card-content">
+                <h3 class="serif">本日の特選素材</h3>
+                <p>店主自らが目利きし、熟成のピークを見極めた極上の肉。溢れ出る旨味と、口の中でほどけるような脂の甘みを、選び抜かれた日本酒と共にご堪能ください。</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-img">
+                <img src="sake_collection.jpg" alt="種類豊富な日本酒のラインナップ">
+            </div>
+            <div class="card-content">
+                <h3 class="serif">酒匠が選ぶ銘酒</h3>
+                <p>「酒匠」の称号を持つ店主が、料理との相性を考え抜いた日本酒をセレクト。物語のある一杯をご提供します。</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="info">
+    <div class="section-title">
+        <span>INFORMATION</span>
+        <h2 class="serif">店舗情報</h2>
+    </div>
+    <table>
+        <tr><th>店名</th><td>饗応 元（キョウオウハジメ）</td></tr>
+        <tr><th>所在地</th><td>〒604-0864 京都府京都市中京区両替町通夷川上る松竹町135-1</td></tr>
+        <tr><th>アクセス</th><td>地下鉄「丸太町駅」4番・5番出口から徒歩3分</td></tr>
+        <tr><th>営業時間</th><td>18:00 ～ 23:00（最終入店）</td></tr>
+        <tr><th>定休日</th><td>日曜日（不定休あり）</td></tr>
+    </table>
+</section>
+
+<footer>
+    <div class="footer-logo serif">饗応 元</div>
+    <div class="footer-info">
+        <p>京都・丸太町の隠れ家、日本酒レストラン</p>
+        <p>ご予約・お問い合わせ：075-746-4861</p>
+    </div>
+    <p class="copyright serif">&copy; 2026 Kyōō Hajime. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>
