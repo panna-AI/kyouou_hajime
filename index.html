@@ -4,15 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>饗応 元（キョウオウハジメ）| 京都・丸太町の日本酒レストラン</title>
-    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;700&family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet">
+    <meta name="description" content="京都・丸太町駅から徒歩3分。饗応 元（キョウオウハジメ）は、厳選日本酒と上質な料理を楽しめる隠れ家レストラン。落ち着いた空間で、特別な一夜をお過ごしください。">
+    <meta name="format-detection" content="telephone=yes">
+    <meta name="theme-color" content="#121212">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="饗応 元（キョウオウハジメ）| 京都・丸太町の日本酒レストラン">
+    <meta property="og:description" content="京都・丸太町の路地裏に佇む、日本酒と料理の隠れ家レストラン。">
+    <meta property="og:image" content="exterior.jpg">
+    <meta property="og:locale" content="ja_JP">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+
     <style>
         :root {
-            --bg: #121212; /* 深い漆黒 */
-            --gold: #d4af37; /* 落ち着きのある金色 */
+            --bg: #121212;
+            --bg-soft: #181818;
+            --gold: #d4af37;
             --white: #f8f8f8;
-            --gray: #a8a8a8;
+            --gray: #b2b2b2;
+            --line: #2a2a2a;
+            --black: #000;
         }
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             background-color: var(--bg);
             color: var(--white);
@@ -20,154 +46,669 @@
             line-height: 1.9;
             overflow-x: hidden;
         }
-        h1, h2, h3, .serif { font-family: 'Shippori Mincho', serif; letter-spacing: 0.15em; }
-        a { text-decoration: none; color: inherit; transition: 0.3s; }
-        img { max-width: 100%; height: auto; display: block; }
+
+        h1, h2, h3, .serif {
+            font-family: 'Shippori Mincho', serif;
+            letter-spacing: 0.12em;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: 0.3s;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
 
         /* Navigation */
         nav {
-            position: fixed; width: 100%; padding: 20px 5%;
-            display: flex; justify-content: space-between; align-items: center;
-            z-index: 1000; background: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 18px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.9), rgba(0,0,0,0.4), transparent);
+            backdrop-filter: blur(3px);
         }
-        .logo { font-size: 1.8rem; color: var(--gold); font-weight: 700; }
-        .reserve-btn { background: var(--gold); color: #000; padding: 12px 28px; border-radius: 2px; font-weight: bold; font-size: 0.95rem; letter-spacing: 0.05em; }
-        .reserve-btn:hover { opacity: 0.9; }
 
-        /* Hero Section */
+        .logo {
+            font-size: 1.5rem;
+            color: var(--gold);
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .nav-right {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .reserve-btn,
+        .map-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 22px;
+            border-radius: 2px;
+            font-weight: 700;
+            font-size: 0.92rem;
+            letter-spacing: 0.05em;
+        }
+
+        .reserve-btn {
+            background: var(--gold);
+            color: var(--black);
+        }
+
+        .reserve-btn:hover {
+            opacity: 0.9;
+        }
+
+        .map-btn {
+            border: 1px solid rgba(212, 175, 55, 0.6);
+            color: var(--white);
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .map-btn:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        /* Hero */
         .hero {
-            height: 100vh; display: flex; align-items: center; justify-content: center;
-            /* 外観写真を使用 */
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url('exterior.jpg');
-            background-size: cover; background-position: center; text-align: center;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 5% 60px;
+            background:
+                linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.7)),
+                url('exterior.jpg');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
         }
-        .hero-content h1 { font-size: 3.5rem; margin-bottom: 30px; line-height: 1.5; text-shadow: 2px 2px 10px rgba(0,0,0,0.8); }
-        .hero-content p { font-size: 1.3rem; color: var(--white); letter-spacing: 0.1em; text-shadow: 1px 1px 5px rgba(0,0,0,0.8); }
 
-        /* Section Layout */
-        section { padding: 120px 5%; max-width: 1100px; margin: 0 auto; }
-        .section-title { text-align: center; margin-bottom: 70px; }
-        .section-title span { display: block; color: var(--gold); font-size: 0.9rem; margin-bottom: 15px; font-family: 'Noto Sans JP', sans-serif; letter-spacing: 0.2em; }
-        .section-title h2 { font-size: 2.5rem; position: relative; padding-bottom: 20px; }
-        .section-title h2::after { content: ""; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 60px; height: 2px; background: var(--gold); }
+        .hero-content {
+            max-width: 900px;
+        }
 
-        /* Flex Columns */
-        .flex-container { display: flex; gap: 80px; align-items: center; }
-        .flex-content { flex: 1.2; }
-        .flex-image { flex: 1; }
-        .flex-image img { width: 100%; border-radius: 2px; box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
-        .flex-content h3 { font-size: 1.8rem; color: var(--gold); margin-bottom: 30px; line-height: 1.4; }
-        .flex-content p { margin-bottom: 20px; color: var(--gray); text-align: justify; }
+        .hero-sub {
+            display: inline-block;
+            color: var(--gold);
+            font-size: 0.95rem;
+            letter-spacing: 0.25em;
+            margin-bottom: 18px;
+        }
 
-        /* Grid */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; }
-        .card { background: #1a1a1a; border: 1px solid #2a2a2a; overflow: hidden; transition: 0.3s; }
-        .card:hover { border-color: var(--gold); }
-        .card-img { height: 300px; overflow: hidden; }
-        .card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s; }
-        .card:hover .card-img img { transform: scale(1.08); }
-        .card-content { padding: 30px; }
-        .card-content h3 { color: var(--gold); margin-bottom: 15px; font-size: 1.4rem; }
-        .card-content p { color: var(--gray); font-size: 0.95rem; }
+        .hero-content h1 {
+            font-size: 3.4rem;
+            margin-bottom: 24px;
+            line-height: 1.45;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+        }
 
-        /* Table */
-        table { width: 100%; border-collapse: collapse; margin-top: 40px; }
-        th, td { padding: 25px; border-bottom: 1px solid #2a2a2a; text-align: left; vertical-align: top; }
-        th { color: var(--gold); width: 25%; font-weight: normal; font-size: 1.1rem; }
-        td { color: var(--gray); }
+        .hero-content p {
+            font-size: 1.15rem;
+            color: var(--white);
+            letter-spacing: 0.08em;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.8);
+            margin-bottom: 34px;
+        }
 
-        /* Footer */
-        footer { padding: 80px 5%; text-align: center; border-top: 1px solid #2a2a2a; background: #0a0a0a; }
-        .footer-logo { font-size: 2.2rem; color: var(--gold); margin-bottom: 25px; }
-        .footer-info { color: var(--gray); margin-bottom: 40px; }
-        .copyright { font-size: 0.8rem; color: #555; }
+        .hero-actions {
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
 
-        /* Responsive */
+        .hero-call,
+        .hero-access,
+        .hero-instagram {
+            padding: 14px 28px;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            border-radius: 2px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-call {
+            background: var(--gold);
+            color: var(--black);
+        }
+
+        .hero-access,
+        .hero-instagram {
+            border: 1px solid rgba(255,255,255,0.35);
+            color: var(--white);
+            background: rgba(255,255,255,0.04);
+        }
+
+        .hero-access:hover,
+        .hero-instagram:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        /* Sections */
+        section {
+            padding: 110px 5%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .section-title span {
+            display: block;
+            color: var(--gold);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            font-family: 'Noto Sans JP', sans-serif;
+            letter-spacing: 0.2em;
+        }
+
+        .section-title h2 {
+            font-size: 2.4rem;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .section-title h2::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background: var(--gold);
+        }
+
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
+        }
+
+        .feature-item {
+            background: var(--bg-soft);
+            border: 1px solid var(--line);
+            padding: 24px 20px;
+            text-align: center;
+        }
+
+        .feature-item h3 {
+            color: var(--gold);
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+        }
+
+        .feature-item p {
+            color: var(--gray);
+            font-size: 0.92rem;
+            line-height: 1.8;
+        }
+
+        .flex-container {
+            display: flex;
+            gap: 70px;
+            align-items: center;
+        }
+
+        .flex-content {
+            flex: 1.2;
+        }
+
+        .flex-image {
+            flex: 1;
+        }
+
+        .flex-image img {
+            width: 100%;
+            border-radius: 2px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+
+        .flex-content h3 {
+            font-size: 1.8rem;
+            color: var(--gold);
+            margin-bottom: 26px;
+            line-height: 1.5;
+        }
+
+        .flex-content p {
+            margin-bottom: 18px;
+            color: var(--gray);
+            text-align: justify;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 36px;
+        }
+
+        .card {
+            background: var(--bg-soft);
+            border: 1px solid var(--line);
+            overflow: hidden;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            border-color: var(--gold);
+            transform: translateY(-2px);
+        }
+
+        .card-img {
+            height: 300px;
+            overflow: hidden;
+        }
+
+        .card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s;
+        }
+
+        .card:hover .card-img img {
+            transform: scale(1.08);
+        }
+
+        .card-content {
+            padding: 28px;
+        }
+
+        .card-content h3 {
+            color: var(--gold);
+            margin-bottom: 14px;
+            font-size: 1.35rem;
+        }
+
+        .card-content p {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        .info-wrap,
+        .map-wrap {
+            background: var(--bg-soft);
+            border: 1px solid var(--line);
+        }
+
+        .info-wrap {
+            padding: 18px 24px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 22px 12px;
+            border-bottom: 1px solid var(--line);
+            text-align: left;
+            vertical-align: top;
+        }
+
+        th {
+            color: var(--gold);
+            width: 24%;
+            font-weight: 500;
+            font-size: 1.05rem;
+        }
+
+        td {
+            color: var(--gray);
+        }
+
+        .cta-box {
+            margin-top: 34px;
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .cta-box a {
+            padding: 14px 24px;
+            border-radius: 2px;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+        }
+
+        .cta-primary {
+            background: var(--gold);
+            color: var(--black);
+        }
+
+        .cta-secondary {
+            border: 1px solid rgba(212, 175, 55, 0.6);
+            color: var(--white);
+            background: transparent;
+        }
+
+        .cta-secondary:hover {
+            color: var(--gold);
+            border-color: var(--gold);
+        }
+
+        .map-wrap {
+            padding: 10px;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.28);
+        }
+
+        .map-wrap iframe {
+            display: block;
+            width: 100%;
+            border-radius: 2px;
+        }
+
+        footer {
+            padding: 70px 5%;
+            text-align: center;
+            border-top: 1px solid var(--line);
+            background: #0a0a0a;
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+
+        .footer-info {
+            color: var(--gray);
+            margin-bottom: 28px;
+        }
+
+        .footer-info p {
+            margin-bottom: 6px;
+        }
+
+        .copyright {
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        @media (max-width: 900px) {
+            .hero-content h1 {
+                font-size: 2.6rem;
+            }
+
+            .flex-container {
+                flex-direction: column;
+                gap: 38px;
+            }
+
+            th {
+                width: 32%;
+            }
+        }
+
         @media (max-width: 768px) {
-            .hero-content h1 { font-size: 2.2rem; }
-            .flex-container { flex-direction: column; gap: 40px; }
-            .section-title h2 { font-size: 2rem; }
-            th { width: 35%; }
+            nav {
+                padding: 14px 5%;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            .nav-right {
+                gap: 8px;
+            }
+
+            .reserve-btn,
+            .map-btn {
+                padding: 10px 14px;
+                font-size: 0.8rem;
+            }
+
+            .hero {
+                min-height: 92vh;
+                padding-top: 100px;
+            }
+
+            .hero-sub {
+                font-size: 0.82rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+                margin-bottom: 18px;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+                line-height: 1.8;
+            }
+
+            .section-title {
+                margin-bottom: 46px;
+            }
+
+            .section-title h2 {
+                font-size: 1.9rem;
+            }
+
+            section {
+                padding: 80px 5%;
+            }
+
+            .card-img {
+                height: 240px;
+            }
+
+            .info-wrap {
+                padding: 8px 14px;
+            }
+
+            table, tbody, tr, th, td {
+                display: block;
+                width: 100%;
+            }
+
+            tr {
+                padding: 14px 0;
+                border-bottom: 1px solid var(--line);
+            }
+
+            th, td {
+                border-bottom: none;
+                padding: 4px 0;
+            }
+
+            th {
+                width: 100%;
+                margin-bottom: 4px;
+            }
+
+            .cta-box,
+            .hero-actions {
+                flex-direction: column;
+            }
+
+            .cta-box a,
+            .hero-call,
+            .hero-access,
+            .hero-instagram {
+                width: 100%;
+                text-align: center;
+            }
         }
     </style>
 </head>
 <body>
 
-<nav>
-    <div class="logo serif">饗応 元</div>
-    <a href="tel:0757464861" class="reserve-btn">お電話で予約</a>
-</nav>
-
-<div class="hero">
-    <div class="hero-content">
-        <h1 class="serif">丸太町の宵、<br>五感で味わう酒と料理の饗宴。</h1>
-        <p class="serif">喧騒を離れた路地裏に、美食の秘密基地。</p>
-    </div>
-</div>
-
-<section id="story">
-    <div class="section-title">
-        <span>INTRODUCTION</span>
-        <h2 class="serif">饗応の心</h2>
-    </div>
-    <div class="flex-container">
-        <div class="flex-content">
-            <h3 class="serif">「元（はじめ）」から始まる、<br>美食の新しい形。</h3>
-            <p>店名の「饗応」には、心を込めて酒食でもてなすという意味を込めました。和食の伝統を大切にしながらも、イタリアンで培った自由な発想をひと匙。</p>
-            <p>重厚な一枚板のカウンターと、静かに時を刻む鷹の佇まい。14席の限られた空間だからこそ、お一人おひとりに寄り添い、最高の一献をご提案いたします。</p>
+<header>
+    <nav>
+        <div class="logo serif">饗応 元</div>
+        <div class="nav-right">
+            <a href="https://maps.google.com/?q=〒604-0864 京都府京都市中京区両替町通夷川上る松竹町135-1" class="map-btn" target="_blank" rel="noopener noreferrer">地図を見る</a>
+            <a href="tel:0756000511" class="reserve-btn">お電話で予約</a>
         </div>
-        <div class="flex-image">
-            <img src="interior.jpg" alt="饗応 元のカウンターと鷹の置物">
-        </div>
-    </div>
-</section>
+    </nav>
 
-<section id="cuisine">
-    <div class="section-title">
-        <span>CUISINE</span>
-        <h2 class="serif">和と洋が溶け合う一皿</h2>
-    </div>
-    <div class="grid">
-        <div class="card">
-            <div class="card-img">
-                <img src="meat.jpg" alt="厳選された和牛の霜降り">
-            </div>
-            <div class="card-content">
-                <h3 class="serif">本日の特選素材</h3>
-                <p>店主自らが目利きし、熟成のピークを見極めた極上の肉。溢れ出る旨味と、口の中でほどけるような脂の甘みを、選び抜かれた日本酒と共にご堪能ください。</p>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-img">
-                <img src="sake_collection.jpg" alt="種類豊富な日本酒のラインナップ">
-            </div>
-            <div class="card-content">
-                <h3 class="serif">酒匠が選ぶ銘酒</h3>
-                <p>「酒匠」の称号を持つ店主が、料理との相性を考え抜いた日本酒をセレクト。物語のある一杯をご提供します。</p>
+    <div class="hero">
+        <div class="hero-content">
+            <span class="hero-sub serif">KYŌŌ HAJIME</span>
+            <h1 class="serif">丸太町の宵、<br>五感で味わう酒と料理の饗宴。</h1>
+            <p class="serif">喧騒を離れた路地裏に、美食の秘密基地。</p>
+            <div class="hero-actions">
+                <a href="tel:0756000511" class="hero-call">ご予約はこちら</a>
+                <a href="#info" class="hero-access">店舗情報を見る</a>
+                <a href="https://www.instagram.com/kyouou.hajime?igsh=MXBtbmk3MnpvZ3RmeQ==" target="_blank" rel="noopener noreferrer" class="hero-instagram">Instagramを見る</a>
             </div>
         </div>
     </div>
-</section>
+</header>
 
-<section id="info">
-    <div class="section-title">
-        <span>INFORMATION</span>
-        <h2 class="serif">店舗情報</h2>
-    </div>
-    <table>
-        <tr><th>店名</th><td>饗応 元（キョウオウハジメ）</td></tr>
-        <tr><th>所在地</th><td>〒604-0864 京都府京都市中京区両替町通夷川上る松竹町135-1</td></tr>
-        <tr><th>アクセス</th><td>地下鉄「丸太町駅」4番・5番出口から徒歩3分</td></tr>
-        <tr><th>営業時間</th><td>18:00 ～ 23:00（最終入店）</td></tr>
-        <tr><th>定休日</th><td>日曜日（不定休あり）</td></tr>
-    </table>
-</section>
+<main>
+    <section id="features">
+        <div class="container">
+            <div class="feature-list">
+                <div class="feature-item">
+                    <h3 class="serif">丸太町駅 徒歩3分</h3>
+                    <p>駅近でありながら、喧騒を離れた落ち着きある立地。</p>
+                </div>
+                <div class="feature-item">
+                    <h3 class="serif">厳選日本酒と和牛</h3>
+                    <p>料理と一献の相性を丁寧に設計した贅沢なひととき。</p>
+                </div>
+                <div class="feature-item">
+                    <h3 class="serif">14席の隠れ家空間</h3>
+                    <p>大切な人と静かに過ごせる、上質で特別な時間を。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="story">
+        <div class="container">
+            <div class="section-title">
+                <span>INTRODUCTION</span>
+                <h2 class="serif">饗応の心</h2>
+            </div>
+            <div class="flex-container">
+                <div class="flex-content">
+                    <h3 class="serif">「元（はじめ）」から始まる、<br>美食の新しい形。</h3>
+                    <p>店名の「饗応」には、心を込めて酒食でもてなすという意味を込めました。和食の伝統を大切にしながらも、イタリアンで培った自由な発想をひと匙。</p>
+                    <p>重厚な一枚板のカウンターと、静かに時を刻む鷹の佇まい。14席の限られた空間だからこそ、お一人おひとりに寄り添い、最高の一献をご提案いたします。</p>
+                </div>
+                <div class="flex-image">
+                    <img src="interior.jpg" alt="饗応 元のカウンターと鷹の置物">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="cuisine">
+        <div class="container">
+            <div class="section-title">
+                <span>CUISINE</span>
+                <h2 class="serif">和と洋が溶け合う一皿</h2>
+            </div>
+            <div class="grid">
+                <article class="card">
+                    <div class="card-img">
+                        <img src="meat.jpg" alt="厳選された和牛の霜降り">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="serif">本日の特選素材</h3>
+                        <p>店主自らが目利きし、熟成のピークを見極めた極上の肉。溢れ出る旨味と、口の中でほどけるような脂の甘みを、選び抜かれた日本酒と共にご堪能ください。</p>
+                    </div>
+                </article>
+                <article class="card">
+                    <div class="card-img">
+                        <img src="sake_collection.jpg" alt="種類豊富な日本酒のラインナップ">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="serif">酒匠が選ぶ銘酒</h3>
+                        <p>「酒匠」の称号を持つ店主が、料理との相性を考え抜いた日本酒をセレクト。物語のある一杯をご提供します。</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section id="info">
+        <div class="container">
+            <div class="section-title">
+                <span>INFORMATION</span>
+                <h2 class="serif">店舗情報</h2>
+            </div>
+
+            <div class="info-wrap">
+                <table>
+                    <tr><th>店名</th><td>饗応 元（キョウオウハジメ）</td></tr>
+                    <tr><th>所在地</th><td>〒604-0864 京都府京都市中京区両替町通夷川上る松竹町135-1</td></tr>
+                    <tr><th>アクセス</th><td>地下鉄「丸太町駅」4番・5番出口から徒歩3分</td></tr>
+                    <tr><th>営業時間</th><td>18:00 - 02:00（23:00最終入店）</td></tr>
+                    <tr><th>定休日</th><td>日曜日（不定休あり）</td></tr>
+                    <tr><th>電話番号</th><td><a href="tel:0756000511">075-600-0511</a></td></tr>
+                    <tr><th>Instagram</th><td><a href="https://www.instagram.com/kyouou.hajime?igsh=MXBtbmk3MnpvZ3RmeQ==" target="_blank" rel="noopener noreferrer">@kyouou.hajime</a></td></tr>
+                </table>
+
+                <div class="cta-box">
+                    <a href="tel:0756000511" class="cta-primary">今すぐ電話で予約する</a>
+                    <a href="https://maps.google.com/?q=〒604-0864 京都府京都市中京区両替町通夷川上る松竹町135-1" target="_blank" rel="noopener noreferrer" class="cta-secondary">Googleマップで見る</a>
+                    <a href="https://www.instagram.com/kyouou.hajime?igsh=MXBtbmk3MnpvZ3RmeQ==" target="_blank" rel="noopener noreferrer" class="cta-secondary">Instagramを見る</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="access-map">
+        <div class="container">
+            <div class="section-title">
+                <span>ACCESS MAP</span>
+                <h2 class="serif">アクセス</h2>
+            </div>
+
+            <div class="map-wrap">
+                <iframe
+                    src="https://www.google.com/maps?q=〒604-0864 京都府京都市中京区両替町通夷川上る松竹町135-1&output=embed"
+                    width="100%"
+                    height="420"
+                    style="border:0;"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </section>
+</main>
 
 <footer>
     <div class="footer-logo serif">饗応 元</div>
     <div class="footer-info">
         <p>京都・丸太町の隠れ家、日本酒レストラン</p>
-        <p>ご予約・お問い合わせ：075-746-4861</p>
+        <p>営業時間：18:00 - 02:00（23:00最終入店）</p>
+        <p>ご予約・お問い合わせ：<a href="tel:0756000511">075-600-0511</a></p>
+        <p>Instagram：<a href="https://www.instagram.com/kyouou.hajime?igsh=MXBtbmk3MnpvZ3RmeQ==" target="_blank" rel="noopener noreferrer">@kyouou.hajime</a></p>
     </div>
     <p class="copyright serif">&copy; 2026 Kyōō Hajime. All Rights Reserved.</p>
 </footer>
